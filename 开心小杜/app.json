@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/xiaodu/duanzi",
+    "pages/xiaodu/tupian",
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/likes/likes",
+    "pages/shares/shares"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "开心小杜",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/xiaodu/duanzi",
+        "text": "段子",
+        "iconPath": "/pages/images/wz1.png",
+        "selectedIconPath": "/pages/images/wz.png"
+      },
+      {
+        "pagePath": "pages/xiaodu/tupian",
+        "text": "图片",
+        "iconPath": "/pages/images/tp1.png",
+        "selectedIconPath": "/pages/images/tp.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

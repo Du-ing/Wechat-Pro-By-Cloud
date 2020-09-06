@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="zero" wx:if="{{shareList.length == 0}}">
+    您暂时没有点赞段子哦！
+  </view>
+
+  <view class="list" wx:else>
+    <view class="listItem" wx:for="{{likeList}}" wx:key="index" data-sid="{{item.user.id}}">
+      <view class="itemHeader">
+        <view class="headering">
+          <image src="{{item.user.medium}}"></image>
+        </view>
+        <view class="text">
+          <view class="username">
+            {{item.user.login}} 
+          </view>
+          <view wx:if="{{item.user.gender=='M'}}">
+            <view class="M">
+              {{item.user.age}}
+              {{item.user.state}}
+            </view>
+          </view>
+          <view wx:else>
+            <view class="W">
+            {{item.user.age}}
+            {{item.user.state}}
+          </view>
+          </view>
+        </view>
+      </view>
+      <view class="itemContent" wx:if="{{item.origin_url == undefined}}">
+        {{item.content}}
+      </view>
+      <view class="itemContent" wx:else>
+        {{item.content}}
+        <image mode="widthFix" src="{{item.origin_url}}"></image>
+      </view>
+      
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="list">
+    <view class="listItem" wx:for="{{dzList}}" wx:key="index" data-sid="{{item.user.id}}">
+      <view class="itemHeader">
+        <view class="headering">
+          <image src="{{item.user.medium}}"></image>
+        </view>
+        <view class="text">
+          <view class="username">
+            {{item.user.login}} 
+          </view>
+          <view wx:if="{{item.user.gender=='M'}}">
+            <view class="M">
+              {{item.user.age}}
+              {{item.user.state}}
+            </view>
+          </view>
+          <view wx:else>
+            <view class="W">
+            {{item.user.age}}
+            {{item.user.state}}
+          </view>
+          </view>
+        </view>
+      </view>
+      <view class="itemContent">
+        {{item.content}}
+      </view>
+      <view class="itemFooter">
+        <view class="zf">
+          <button id="zf_button" open-type="share" bindtap="clickShare" data-index="{{index}}"></button>
+          <text>{{item.share_count}}</text>
+        </view>
+
+        <view>
+          
+	      </view>
+
+        <view>
+          <image bindtap="clickHeart"  class="{{class_list[index]}}" src="{{class_list[index] == 'heart'?'/pages/images/dz.png' : '/pages/images/dz1.png'}}"></image>
+          <text>{{up_list[index]}}</text>
+	      </view>
+
+      </view>
+    </view>
+  </view>
+
+  <view bindtap='goHome'>
+    <image class="add_icon" src="/pages/images/home.png"></image>
+  </view>
+
+</view>

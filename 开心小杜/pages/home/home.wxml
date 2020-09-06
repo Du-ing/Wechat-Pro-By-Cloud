@@ -1,0 +1,31 @@
+<view class="view_contain">
+  <!-- 头像昵称 -->
+  <view class="view_1">
+    <view class="view_image_text" wx:if="{{userInfo != null}}">
+      <image class="image_radius" src="{{userInfo.avatarUrl}}" />
+      <text class="name">{{userInfo.nickName}}</text>
+    </view>
+
+    <view class="view_image_text" wx:else>
+      <image class="image_radius" src="/pages/images/blank.jpg" />
+      <button class="name_bt" open-type="getUserInfo" bindgetuserinfo="login">点击授权登录</button>
+    </view>
+  </view>
+
+  <!-- 信息 -->
+
+  <view class="view_2">
+    <view class="view_tupianwenzi" bindtap="goLikes">
+      <image class="image_tupian" src="/pages/images/mylike.png"></image>
+      <text class="text_dz">我点赞的段子</text>
+    </view>
+  </view>
+
+  <view class="view_2">
+    <view class="view_tupianwenzi" bindtap="goShares">
+      <image class="image_tupian" src="/pages/images/myfx.png"></image>
+      <text class="text_dz">我分享的段子</text>
+    </view>
+  </view>
+  
+</view>
