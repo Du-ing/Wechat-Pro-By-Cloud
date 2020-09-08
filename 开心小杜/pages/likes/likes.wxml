@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="zero" wx:if="{{shareList.length == 0}}">
+  <view class="zero" wx:if="{{likeList.length == 0}}">
     您暂时没有点赞段子哦！
   </view>
 

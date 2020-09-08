@@ -116,10 +116,17 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
     },1500);
-    //刷新数据
-    this.setData({
-      
-    })
+    
+    let that = this
+
+    //检查是否已授权登录
+    if (app.globalData.userInfo != null) {
+      this.get_openid()//获取openid
+      that.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } 
   },
 
   /**

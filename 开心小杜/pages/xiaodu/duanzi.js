@@ -12,7 +12,6 @@ Page({
     class_list:[],//点赞情况列表
     up_list:[],//点赞数列表
     share_list:[]//转发数列表
-
   },
 
   /**
@@ -37,7 +36,10 @@ Page({
     //刷新数据
     this.setData({
       dzList:[],
-      page:this.data.page+1
+      page:this.data.page+1,
+      class_list:[],
+      up_list:[],
+      share_list:[]
     })
     this.getDuanzi()
   },
@@ -48,7 +50,11 @@ Page({
   onReachBottom: function (event) {
     //请求页面+1
     this.setData({
-      page:this.data.page+1
+      dzList:[],
+      page:this.data.page+1,
+      class_list:[],
+      up_list:[],
+      share_list:[]
     })
     //调用请求
     this.getDuanzi()
@@ -68,6 +74,7 @@ Page({
     let page = this.data.page
     let flags = this.data.class_list
     let ups = this.data.up_list
+    let shares = this.data.share_list
     //云函数调用 
     wx.cloud.callFunction({
       name:"getDuanzi",
@@ -79,12 +86,14 @@ Page({
           dzs.push(items[i])
           flags.push("heart")
           ups.push(items[i].votes.up)
+          shares.push(items[i].share_count)
         }
   
         that.setData({
           dzList:dzs,
           class_list:flags,
-          up_list:ups
+          up_list:ups,
+          share_list:shares
         })
       }
     })
@@ -97,6 +106,7 @@ Page({
 
   //点赞
   clickHeart(event) {
+    let page1 = this.data.page
     let index = event.currentTarget.dataset.index //获取点击的元素的标识
     let list = this.data.class_list
     let ups = this.data.up_list
@@ -112,8 +122,6 @@ Page({
 
       //主页加入点赞的项
       if(app.globalData.userInfo != null){
-        let page1 = this.data.page
-        
         console.log(page1,"============",index)
         app.globalData.like.push({
           type:"duanzi",
@@ -137,14 +145,12 @@ Page({
         })
       }, 200);
       //主页取消点赞的项
-      if(app.globalData.userInfo != null){
-        let page1 = this.data.page
-        
+      if(app.globalData.userInfo != null){   
         console.log(page1,"============",index)
 
         let like_list = app.globalData.like
         for(let i=0;i<like_list.length;i++){
-          if(like_list[i].page == page1 && like_list[i].index == index){
+          if(like_list[i].page == page1 && like_list[i].index == index && like_list[i].type == "daunzi"){
             app.globalData.like.splice(i,1)
           }
         }
@@ -155,9 +161,15 @@ Page({
   //转发
   clickShare(event) {
     let index = event.currentTarget.dataset.index //获取点击的元素的标识
+    let shares = this.data.share_list
 
     //主页加入转发的项
     if(app.globalData.userInfo != null){
+      shares[index]++
+      this.setData({
+        share_list:shares
+      })
+
       let page1 = this.data.page
       
       console.log(page1,"============",index)

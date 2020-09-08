@@ -17,9 +17,9 @@
           </view>
           <view wx:else>
             <view class="W">
-            {{item.user.age}}
-            {{item.user.state}}
-          </view>
+              {{item.user.age}}
+              {{item.user.state}}
+            </view>
           </view>
         </view>
       </view>
@@ -29,7 +29,7 @@
       <view class="itemFooter">
         <view class="zf">
           <button id="zf_button" open-type="share" bindtap="clickShare" data-index="{{index}}"></button>
-          <text>{{item.share_count}}</text>
+          <text>{{share_list[index]}}</text>
         </view>
 
         <view>
@@ -37,7 +37,7 @@
 	      </view>
 
         <view>
-          <image bindtap="clickHeart"  class="{{class_list[index]}}" src="{{class_list[index] == 'heart'?'/pages/images/dz.png' : '/pages/images/dz1.png'}}"></image>
+          <image bindtap="clickHeart" data-index="{{index}}" data-type="{{}}" class="{{class_list[index]}}" src="{{class_list[index] == 'heart'?'/pages/images/dz.png' : '/pages/images/dz1.png'}}"></image>
           <text>{{up_list[index]}}</text>
 	      </view>
 

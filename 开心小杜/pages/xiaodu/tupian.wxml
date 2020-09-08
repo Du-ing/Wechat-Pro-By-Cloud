@@ -31,7 +31,7 @@
 
         <view class="zf">
           <button id="zf_button" open-type="share" bindtap="clickShare" data-index="{{index}}"></button>
-          <text>{{item.share_count}}</text>
+          <text>{{share_list[index]}}</text>
         </view>
 
         <view>

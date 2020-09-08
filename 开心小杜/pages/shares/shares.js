@@ -17,13 +17,6 @@ Page({
    */
   onLoad: function (options) {
     this.getDuanzi()
-
-    wx.cloud.callFunction({
-      name:"getDuanzi",
-      success(res){
-        console.log("云函数",res)
-      }
-    })
   },
 
   //请求段子数据
@@ -61,10 +54,18 @@ Page({
           success:function(res){
             console.log("share页面查询image成功！",res.result.data[0])
             let items = res.result.data[0].items//响应获取的数据
+            let new_list = []
 
-            share_list.push(items[index])
+            //剔除加载不出的图片段子
+            for(let i=0;i<items.length;i++){
+              if(items[i].attachments == undefined){
+                new_list.push(items[i])
+              }
+            }
+
+            share_list.push(new_list[index])
             that.setData({
-              shareList:share_list
+              shareList:share_list.reverse()
             })
           }
         })

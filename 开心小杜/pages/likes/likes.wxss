@@ -1,6 +1,9 @@
 .container{
   padding: 0rpx;
 }
+.zero{
+  color: crimson;
+}
 .listItem{
   width: 100%;
   border-bottom: 1px solid rgb(216, 211, 211);

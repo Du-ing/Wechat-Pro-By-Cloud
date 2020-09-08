@@ -2,7 +2,6 @@
   padding: 0rpx;
 }
 .zero{
-  background-color: blanchedalmond;
   color: crimson;
 }
 .listItem{
